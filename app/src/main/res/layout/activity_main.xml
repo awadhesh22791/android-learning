@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <Button
         android:id="@+id/btn_add"
@@ -16,11 +16,12 @@
         android:text="@string/btn_add_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/edit_text_note"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/edit_text_todo"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="addNote"/>
 
     <EditText
-        android:id="@+id/edit_text_note"
+        android:id="@+id/edit_text_todo"
         android:layout_width="211dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"

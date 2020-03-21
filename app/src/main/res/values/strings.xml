@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">TodoApp</string>
-    <string name="lbl_edit_note">Note</string>
+    <string name="lbl_edit_note">Todo</string>
     <string name="btn_add_text">Add</string>
 </resources>
