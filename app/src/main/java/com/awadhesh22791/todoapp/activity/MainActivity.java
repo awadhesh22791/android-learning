@@ -3,6 +3,8 @@ package com.awadhesh22791.todoapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.awadhesh22791.todoapp.R;
+import com.awadhesh22791.todoapp.activity.adapter.TodoListAdapter;
+import com.awadhesh22791.todoapp.constant.Static;
 import com.awadhesh22791.todoapp.entity.Todo;
 import com.awadhesh22791.todoapp.viewmodel.TodoViewModel;
 
@@ -24,13 +28,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         model=new ViewModelProvider(this).get(TodoViewModel.class);
+
+        setContentView(R.layout.activity_main);
+        RecyclerView recyclerView=findViewById(R.id.recyclerView3);
+        final TodoListAdapter adapter=new TodoListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         model.getAllTodos().observe(this, new Observer<List<Todo>>() {
             @Override
             public void onChanged(List<Todo> todos) {
-                Log.i(TAG,"Total todos: "+todos.size());
+                adapter.setTodos(todos);
             }
         });
-        setContentView(R.layout.activity_main);
     }
 
     public void addNote(View view){
@@ -43,5 +52,6 @@ public class MainActivity extends AppCompatActivity {
         Todo newTodo=new Todo();
         newTodo.todo=todo;
         model.insert(newTodo);
+        editText.setText(Static.EMPTY_STRING);
     }
 }
