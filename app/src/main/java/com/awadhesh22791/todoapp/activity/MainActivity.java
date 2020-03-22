@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.recyclerView3);
         final TodoListAdapter adapter=new TodoListAdapter(this, new TodoListAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Todo todo) {
+            public void toggleTaskStatus(Todo todo) {
                 todo.completed=!todo.completed;
                 model.update(todo);
             }

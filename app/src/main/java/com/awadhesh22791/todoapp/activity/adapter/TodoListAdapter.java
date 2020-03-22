@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoViewHolder> {
     public interface OnItemClickListener{
-        void onItemClick(Todo todo);
+        void toggleTaskStatus(Todo todo);
     }
 
     class TodoViewHolder extends RecyclerView.ViewHolder{
@@ -32,7 +32,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoVi
             checkbox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onItemClick(todo);
+                    listener.toggleTaskStatus(todo);
                 }
             });
         }
