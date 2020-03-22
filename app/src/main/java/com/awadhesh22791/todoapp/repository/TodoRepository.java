@@ -24,6 +24,14 @@ public class TodoRepository {
         return todos;
     }
 
+    public Todo getById(int id){return todoDao.getById(id);}
+
+    public void update(Todo todo){
+        AppDatabase.databaseWriteExecutor.execute(()->{
+            todoDao.update(todo);
+        });
+    }
+
     public void insert(final Todo todo){
         AppDatabase.databaseWriteExecutor.execute(()->{
             todoDao.add(todo);

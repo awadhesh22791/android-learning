@@ -15,16 +15,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoViewHolder> {
+    public interface OnItemClickListener{
+        void onItemClick(Todo todo);
+    }
+
     class TodoViewHolder extends RecyclerView.ViewHolder{
         private final CheckBox checkbox;
         private TodoViewHolder(View view){
             super(view);
             checkbox=view.findViewById(R.id.todoCheckBox);
         }
+        public void bind(final Todo todo,final OnItemClickListener listener){
+            checkbox.setId(todo.todoId);
+            checkbox.setText(todo.todo);
+            checkbox.setChecked(todo.completed);
+            checkbox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(todo);
+                }
+            });
+        }
     }
     private final LayoutInflater inflater;
+    private OnItemClickListener listener;
     private List<Todo> todos;
-    public TodoListAdapter(Context context){inflater=LayoutInflater.from(context);}
+    public TodoListAdapter(Context context,OnItemClickListener listener){
+        inflater=LayoutInflater.from(context);
+        this.listener=listener;
+    }
     @NonNull
     @Override
     public TodoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -36,7 +55,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.TodoVi
     public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
         if(todos!=null){
             Todo current=todos.get(position);
-            holder.checkbox.setText(current.todo);
+            holder.bind(current,listener);
         }else{
 
         }

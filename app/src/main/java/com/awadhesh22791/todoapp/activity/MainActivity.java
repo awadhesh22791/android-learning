@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,7 +32,13 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView=findViewById(R.id.recyclerView3);
-        final TodoListAdapter adapter=new TodoListAdapter(this);
+        final TodoListAdapter adapter=new TodoListAdapter(this, new TodoListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Todo todo) {
+                todo.completed=!todo.completed;
+                model.update(todo);
+            }
+        });
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         model.getAllTodos().observe(this, new Observer<List<Todo>>() {

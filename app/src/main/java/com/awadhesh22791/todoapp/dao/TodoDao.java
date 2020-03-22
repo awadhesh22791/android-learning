@@ -24,4 +24,7 @@ public interface TodoDao {
 
     @Query("SELECT * FROM Todo")
     LiveData<List<Todo>> getAll();
+
+    @Query("SELECT * FROM Todo WHERE todoId=:id")
+    Todo getById(int id);
 }

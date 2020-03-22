@@ -24,4 +24,6 @@ public class TodoViewModel extends AbstractViewModel {
 
     public void insert(Todo todo){todoRepository.insert(todo);}
 
+    public void update(Todo todo){todoRepository.update(todo);}
+
 }
