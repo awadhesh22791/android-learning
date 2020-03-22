@@ -8,7 +8,6 @@ public class TodoApp extends Application {
     public void onCreate(){
         super.onCreate();
         TodoApp.context=getApplicationContext();
-        DBProvider.initDB();
     }
 
     public static Context getContext(){

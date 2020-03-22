@@ -4,6 +4,7 @@ import com.awadhesh22791.todoapp.entity.Todo;
 
 import java.util.List;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -22,5 +23,5 @@ public interface TodoDao {
     void delete(Todo todo);
 
     @Query("SELECT * FROM Todo")
-    List<Todo>getAll();
+    LiveData<List<Todo>> getAll();
 }

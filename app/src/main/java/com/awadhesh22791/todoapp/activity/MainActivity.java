@@ -1,6 +1,8 @@
 package com.awadhesh22791.todoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,22 +12,24 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.awadhesh22791.todoapp.R;
-import com.awadhesh22791.todoapp.config.DBProvider;
-import com.awadhesh22791.todoapp.dao.TodoDao;
 import com.awadhesh22791.todoapp.entity.Todo;
+import com.awadhesh22791.todoapp.viewmodel.TodoViewModel;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG="MainActivity";
-
-    private TodoDao todoDao=DBProvider.db.noteDao();
+    TodoViewModel model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(DBProvider.db!=null){
-            Toast.makeText(this,"DB connection open.",Toast.LENGTH_LONG).show();
-        }
+        model=new ViewModelProvider(this).get(TodoViewModel.class);
+        model.getAllTodos().observe(this, new Observer<List<Todo>>() {
+            @Override
+            public void onChanged(List<Todo> todos) {
+                Log.i(TAG,"Total todos: "+todos.size());
+            }
+        });
         setContentView(R.layout.activity_main);
     }
 
@@ -36,15 +40,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Todo not available",Toast.LENGTH_LONG).show();
             return;
         }
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                Todo newTodo=new Todo();
-                newTodo.todo=todo;
-                todoDao.add(newTodo);
-                List<Todo>todos=todoDao.getAll();
-                Log.i(TAG, "Total Todos:"+todos.size());
-            }
-        });
+        Todo newTodo=new Todo();
+        newTodo.todo=todo;
+        model.insert(newTodo);
     }
 }
