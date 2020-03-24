@@ -2,4 +2,8 @@
     <string name="app_name">TodoApp</string>
     <string name="lbl_edit_note">Todo</string>
     <string name="btn_add_text">Add</string>
+    <string name="buton_label_toast">TOAST</string>
+    <string name="button_label_count">Count</string>
+    <string name="count_initial_value">0</string>
+    <string name="toast_message">Hello Toast!</string>
 </resources>
