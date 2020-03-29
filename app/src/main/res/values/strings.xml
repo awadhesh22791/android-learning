@@ -36,4 +36,7 @@ This volume starts with the first new Beatle song, “Free as a Bird” (based o
     <string name="donut_order_message">You ordered a donut.</string>
     <string name="ice_cream_order_message">You ordered an ice cream sandwich.</string>
     <string name="froyo_order_message">You ordered a FroYo.</string>
+    <string name="delivery_method_same_day">Same day messanger service</string>
+    <string name="delivery_method_next_day">Next day ground delivery</string>
+    <string name="delivery_method_pick_up">Pick up</string>
 </resources>
