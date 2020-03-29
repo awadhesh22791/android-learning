@@ -33,4 +33,7 @@ This volume starts with the first new Beatle song, “Free as a Bird” (based o
     <string name="donuts_are_glazed_and_sprinkled_with_candy">Donuts are glazed and sprinkled with candy.</string>
     <string name="ice_cream_sandwiches_have_chocolate_wafers_and_vanilla_filling">Ice cream sandwiches have chocolate wafers and vanilla filling.</string>
     <string name="froyo_is_premium_self_serve_frozen_yogurt">FroYo is premium self-serve frozen yogurt.</string>
+    <string name="donut_order_message">You ordered a donut.</string>
+    <string name="ice_cream_order_message">You ordered an ice cream sandwich.</string>
+    <string name="froyo_order_message">You ordered a FroYo.</string>
 </resources>
