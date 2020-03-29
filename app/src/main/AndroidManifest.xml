@@ -10,8 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity"></activity>
-        <activity android:name=".FirstActivity" >
+        <activity android:name=".SecondActivity" android:label="Second Activity" android:parentActivityName=".FirstActivity"></activity>
+        <activity android:name=".FirstActivity" android:label="First Activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
