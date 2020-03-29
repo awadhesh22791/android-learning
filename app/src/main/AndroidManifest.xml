@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.OrderActivity"
+            android:parentActivityName=".ClickableImageActivity"></activity>
         <activity android:name=".ClickableImageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,15 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ImplicitActivity">
-        </activity>
+        <activity android:name=".ImplicitActivity"></activity>
         <activity
             android:name=".SecondActivity"
             android:label="Second Activity"
             android:parentActivityName=".FirstActivity" />
         <activity
             android:name=".FirstActivity"
-            android:label="First Activity"></activity>
+            android:label="First Activity" />
         <activity android:name=".TextScrollingViewActivity" />
         <activity android:name=".activity.HelloToastActivity" />
         <activity android:name=".activity.MainActivity" />
