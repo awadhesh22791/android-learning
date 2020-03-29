@@ -116,5 +116,6 @@
         app:backgroundTint="#121111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_shopping_cart" />
+        app:srcCompat="@drawable/ic_shopping_cart"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
