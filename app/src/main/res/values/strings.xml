@@ -29,4 +29,8 @@ This volume starts with the first new Beatle song, “Free as a Bird” (based o
 \n\n
 <i>The Lost Lennon Tapes Vol. 28</i> — A song recorded for the <i>Let It Be</i> album was actually worked on way back in the beginning, six years earlier. This take shows how they did it much more slowly, with an R&amp;B feel to it.
 </string>
+    <string name="droid_deserts">Droid Deserts</string>
+    <string name="donuts_are_glazed_and_sprinkled_with_candy">Donuts are glazed and sprinkled with candy.</string>
+    <string name="ice_cream_sandwiches_have_chocolate_wafers_and_vanilla_filling">Ice cream sandwiches have chocolate wafers and vanilla filling.</string>
+    <string name="froyo_is_premium_self_serve_frozen_yogurt">FroYo is premium self-serve frozen yogurt.</string>
 </resources>
