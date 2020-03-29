@@ -65,12 +65,26 @@
                 android:id="@+id/text_view_phone"
                 android:text="Phone"
                 android:layout_marginTop="10dp"/>
-            <EditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:id="@+id/edit_text_phone"
-                android:inputType="phone"/>
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edit_text_phone"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:inputType="phone"
+                    android:imeOptions="actionSend"/>
+
+                <Spinner
+                    android:id="@+id/spinner_phone_type"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="15dp" />
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,6 +126,57 @@
                     android:onClick="selectDeliveryMethod"
                     android:text="@string/delivery_method_pick_up"/>
             </RadioGroup>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/text_view_additional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Additional"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_chocolate_syrup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="addAdditional"
+                    android:text="Chocolate Syrup" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_sprinkles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="addAdditional"
+                    android:text="Sprinkles" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_crushed_nuts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="addAdditional"
+                    android:text="Crushed Nuts" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_cherries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="addAdditional"
+                    android:text="Cherries" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_orio_cookie_crumbles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:onClick="addAdditional"
+                    android:text="Orio cookie crumbles" />
+            </LinearLayout>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

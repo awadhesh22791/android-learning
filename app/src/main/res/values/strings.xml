@@ -39,4 +39,10 @@ This volume starts with the first new Beatle song, “Free as a Bird” (based o
     <string name="delivery_method_same_day">Same day messanger service</string>
     <string name="delivery_method_next_day">Next day ground delivery</string>
     <string name="delivery_method_pick_up">Pick up</string>
+    <string-array name="phone_type">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Mobile</item>
+        <item>Other</item>
+    </string-array>
 </resources>
