@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.OrderActivity"
-            android:parentActivityName=".ClickableImageActivity"></activity>
-        <activity android:name=".ClickableImageActivity">
+            android:parentActivityName=".ClickableImageActivity"
+            android:label="Droid Restaurant"></activity>
+        <activity android:name=".ClickableImageActivity"
+            android:label="Droid Restaurant">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
