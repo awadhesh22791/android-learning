@@ -1,4 +1,4 @@
-package com.awadhesh22791.todoapp;
+package com.awadhesh22791.todoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ShareCompat;
@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.awadhesh22791.todoapp.R;
 
 public class ImplicitActivity extends AppCompatActivity {
     private EditText editTextWebsite;

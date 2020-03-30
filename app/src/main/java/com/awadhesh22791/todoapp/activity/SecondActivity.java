@@ -1,4 +1,4 @@
-package com.awadhesh22791.todoapp;
+package com.awadhesh22791.todoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.awadhesh22791.todoapp.R;
 import com.awadhesh22791.todoapp.constant.Field;
 
 public class SecondActivity extends AppCompatActivity {

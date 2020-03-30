@@ -1,4 +1,4 @@
-package com.awadhesh22791.todoapp;
+package com.awadhesh22791.todoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.awadhesh22791.todoapp.activity.OrderActivity;
+import com.awadhesh22791.todoapp.R;
 import com.awadhesh22791.todoapp.constant.Field;
 
 public class ClickableImageActivity extends AppCompatActivity {

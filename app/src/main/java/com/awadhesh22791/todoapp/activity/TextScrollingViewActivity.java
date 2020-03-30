@@ -1,8 +1,10 @@
-package com.awadhesh22791.todoapp;
+package com.awadhesh22791.todoapp.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.awadhesh22791.todoapp.R;
 
 public class TextScrollingViewActivity extends AppCompatActivity {
 

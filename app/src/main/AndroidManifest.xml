@@ -11,9 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.OrderActivity"
-            android:parentActivityName=".ClickableImageActivity"
+            android:parentActivityName=".activity.ClickableImageActivity"
             android:label="Droid Restaurant"></activity>
-        <activity android:name=".ClickableImageActivity"
+        <activity android:name=".activity.ClickableImageActivity"
             android:label="Droid Restaurant">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,15 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ImplicitActivity"></activity>
+        <activity android:name=".activity.ImplicitActivity"></activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".activity.SecondActivity"
             android:label="Second Activity"
-            android:parentActivityName=".FirstActivity" />
+            android:parentActivityName=".activity.FirstActivity" />
         <activity
-            android:name=".FirstActivity"
+            android:name=".activity.FirstActivity"
             android:label="First Activity" />
-        <activity android:name=".TextScrollingViewActivity" />
+        <activity android:name=".activity.TextScrollingViewActivity" />
         <activity android:name=".activity.HelloToastActivity" />
         <activity android:name=".activity.MainActivity" />
     </application>
