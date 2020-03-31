@@ -43,7 +43,7 @@ public class ClickableImageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"You selected Settings.",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_order:
-                Toast.makeText(getApplicationContext(),"You selected Orders.",Toast.LENGTH_SHORT).show();
+                orderDesert();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -67,7 +67,7 @@ public class ClickableImageActivity extends AppCompatActivity {
         displayToastMessage(getString(R.string.froyo_order_message));
     }
 
-    public void orderDesert(View view) {
+    public void orderDesert() {
         Intent intent=new Intent(ClickableImageActivity.this, OrderActivity.class);
         intent.putExtra(Field.MESSAGE,mOrderMessage);
         startActivity(intent);
