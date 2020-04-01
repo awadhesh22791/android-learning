@@ -16,7 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.awadhesh22791.todoapp.DatePickerFragment;
+import com.awadhesh22791.todoapp.TimePickerFragment;
+import com.awadhesh22791.todoapp.fragment.DatePickerFragment;
 import com.awadhesh22791.todoapp.R;
 import com.awadhesh22791.todoapp.constant.Field;
 
@@ -29,7 +30,7 @@ import androidx.fragment.app.DialogFragment;
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String TAG="OrderActivity";
     private TextView orderMessage;
-    private EditText editTextPhone,deliveryDate;
+    private EditText editTextPhone,deliveryDate,deliveryTime;
     private RadioButton radioButtonDeliveryMethod;
     private Spinner spinnerPhoneType;
     private List<String>additional=new ArrayList<>();
@@ -66,11 +67,23 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         if(deliveryDate!=null){
             deliveryDate.setOnClickListener(deliveryDateClickListener);
         }
+        deliveryTime=findViewById(R.id.edit_text_delivery_time);
+        if(deliveryTime!=null){
+            deliveryTime.setOnClickListener(deliveryTimeClickListener);
+        }
     }
 
     public void initializeDeliveryDate(int year,int month,int day){
         deliveryDate.setText(String.format("%02d",month)+"/"+String.format("%02d",day)+"/"+year);
     }
+
+    private View.OnClickListener deliveryTimeClickListener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            DialogFragment newFragment=new TimePickerFragment();
+            newFragment.show(getSupportFragmentManager(),"timePicker");
+        }
+    };
 
     private View.OnClickListener deliveryDateClickListener=new View.OnClickListener(){
         @Override
