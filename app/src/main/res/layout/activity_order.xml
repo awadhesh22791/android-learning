@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:id="@+id/edit_text_delivery_time"
-                android:hint="HH:MM:SS AM/PM"
+                android:hint="HH:MM AM/PM"
                 android:focusable="false"
                 android:enabled="true"/>
             <Button

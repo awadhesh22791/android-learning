@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.awadhesh22791.todoapp.activity.OrderActivity;
+
 import java.util.Calendar;
 
 /**
@@ -25,14 +27,18 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         Calendar calendar=Calendar.getInstance();
-        int hour=calendar.get(Calendar.HOUR);
+        int hour=calendar.get(Calendar.HOUR_OF_DAY);
         int minutes=calendar.get(Calendar.MINUTE);
-        int seconds=calendar.get(Calendar.SECOND);
-        return new TimePickerDialog(getActivity(),this,hour,minutes,true);
+        return new TimePickerDialog(getActivity(),this,hour,minutes,false);
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
+        String am_pm="AM";
+        if(hourOfDay>12){
+            am_pm="PM";
+        }
+        OrderActivity orderActivity= (OrderActivity) getActivity();
+        orderActivity.initializeDeliveryTime(hourOfDay,minute,am_pm);
     }
 }

@@ -77,6 +77,10 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         deliveryDate.setText(String.format("%02d",month)+"/"+String.format("%02d",day)+"/"+year);
     }
 
+    public void initializeDeliveryTime(int hour,int minutes,String am_pm){
+        deliveryTime.setText(String.format("%02d",hour)+":"+String.format("%02d",minutes)+" "+am_pm);
+    }
+
     private View.OnClickListener deliveryTimeClickListener=new View.OnClickListener() {
         @Override
         public void onClick(View v) {
