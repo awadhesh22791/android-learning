@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awadhesh22791.todoapp.DatePickerFragment;
 import com.awadhesh22791.todoapp.R;
 import com.awadhesh22791.todoapp.constant.Field;
 
@@ -23,11 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String TAG="OrderActivity";
     private TextView orderMessage;
-    private EditText editTextPhone;
+    private EditText editTextPhone,deliveryDate;
     private RadioButton radioButtonDeliveryMethod;
     private Spinner spinnerPhoneType;
     private List<String>additional=new ArrayList<>();
@@ -60,7 +62,23 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         if(editTextPhone!=null){
             editTextPhone.setOnEditorActionListener(editorActionListener);
         }
+        deliveryDate=findViewById(R.id.edit_text_delivery_date);
+        if(deliveryDate!=null){
+            deliveryDate.setOnClickListener(deliveryDateClickListener);
+        }
     }
+
+    public void initializeDeliveryDate(int year,int month,int day){
+        deliveryDate.setText(String.format("%02d",month)+"/"+String.format("%02d",day)+"/"+year);
+    }
+
+    private View.OnClickListener deliveryDateClickListener=new View.OnClickListener(){
+        @Override
+        public void onClick(View view) {
+            DialogFragment newFragment=new DatePickerFragment();
+            newFragment.show(getSupportFragmentManager(),"datePicker");
+        }
+    };
 
     private TextView.OnEditorActionListener editorActionListener=new TextView.OnEditorActionListener() {
         @Override

@@ -169,6 +169,20 @@
                     android:onClick="addAdditional"
                     android:text="Orio cookie crumbles" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_view_delivery_date"
+                android:text="Delivery date"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:id="@+id/edit_text_delivery_date"
+                android:hint="MM/DD/YYYY"
+                android:focusable="false"
+                android:enabled="true"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
