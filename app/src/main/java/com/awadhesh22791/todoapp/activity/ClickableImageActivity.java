@@ -1,8 +1,10 @@
 package com.awadhesh22791.todoapp.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,7 +45,22 @@ public class ClickableImageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"You selected Settings.",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_order:
-                orderDesert();
+                AlertDialog.Builder orderConfirmation=new AlertDialog.Builder(ClickableImageActivity.this);
+                orderConfirmation.setTitle("Confirm your order");
+                orderConfirmation.setMessage("Are you sure you want to continue?");
+                orderConfirmation.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        orderDesert();
+                    }
+                });
+                orderConfirmation.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(),"We are sure you like something.",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                orderConfirmation.show();
         }
         return super.onOptionsItemSelected(item);
     }
