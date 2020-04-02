@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -17,7 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.awadhesh22791.todoapp.TimePickerFragment;
+import com.awadhesh22791.todoapp.fragment.TimePickerFragment;
 import com.awadhesh22791.todoapp.fragment.DatePickerFragment;
 import com.awadhesh22791.todoapp.R;
 import com.awadhesh22791.todoapp.constant.Field;
@@ -31,6 +32,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String TAG="OrderActivity";
+    private Button buttonOrderPayment;
     private TextView orderMessage;
     private EditText editTextPhone,deliveryDate,deliveryTime;
     private RadioButton radioButtonDeliveryMethod;
@@ -73,6 +75,8 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         if(deliveryTime!=null){
             deliveryTime.setOnClickListener(deliveryTimeClickListener);
         }
+        buttonOrderPayment=findViewById(R.id.order_payment);
+        buttonOrderPayment.setOnClickListener(orderPaymentClickHandler);
         Toolbar toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar()!=null){
@@ -97,6 +101,14 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
     public void initializeDeliveryTime(int hour,int minutes,String am_pm){
         deliveryTime.setText(String.format("%02d",hour)+":"+String.format("%02d",minutes)+" "+am_pm);
     }
+
+    private View.OnClickListener orderPaymentClickHandler=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(getApplicationContext(), PaymentActivity.class);
+            startActivity(intent);
+        }
+    };
 
     private View.OnClickListener deliveryTimeClickListener=new View.OnClickListener() {
         @Override
