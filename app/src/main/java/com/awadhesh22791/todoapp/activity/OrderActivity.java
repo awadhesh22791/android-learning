@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -71,9 +73,24 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         if(deliveryTime!=null){
             deliveryTime.setOnClickListener(deliveryTimeClickListener);
         }
+        Toolbar toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
-    public void initializeDeliveryDate(int year,int month,int day){
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void initializeDeliveryDate(int year, int month, int day){
         deliveryDate.setText(String.format("%02d",month)+"/"+String.format("%02d",day)+"/"+year);
     }
 
