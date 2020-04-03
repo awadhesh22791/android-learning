@@ -1,7 +1,7 @@
 package com.awadhesh22791.todoapp.activity.adapter;
 
-import com.awadhesh22791.todoapp.CardPaymentFragment;
-import com.awadhesh22791.todoapp.NetbankingPaymentFragment;
+import com.awadhesh22791.todoapp.fragment.CardPaymentFragment;
+import com.awadhesh22791.todoapp.fragment.NetbankingPaymentFragment;
 import com.awadhesh22791.todoapp.fragment.UpiPaymentFragment;
 
 import androidx.annotation.NonNull;
