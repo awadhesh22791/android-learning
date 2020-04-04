@@ -27,6 +27,7 @@ allprojects {
         archLifecycleVersion = '2.2.0-rc02'
         coreTestingVersion = '2.1.0'
         materialVersion = '1.0.0'
+        nav_version = "2.2.1"
     }
 }
 

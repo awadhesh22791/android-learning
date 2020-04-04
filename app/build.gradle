@@ -49,6 +49,8 @@ dependencies {
 
 // UI
     implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
+    implementation "androidx.navigation:navigation-ui:$nav_version"
 
 // Testing
     androidTestImplementation "androidx.arch.core:core-testing:$rootProject.coreTestingVersion"
