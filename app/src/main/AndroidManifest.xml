@@ -10,10 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".activity.OrderActivity"
-            android:parentActivityName=".activity.ClickableImageActivity"
+        <activity android:name=".activity.PaymentActivity"></activity>
+        <activity
+            android:name=".activity.OrderActivity"
             android:label="Droid Restaurant"></activity>
-        <activity android:name=".activity.ClickableImageActivity"
+        <activity
+            android:name=".activity.ClickableImageActivity"
             android:label="Droid Restaurant">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ImplicitActivity"></activity>
+        <activity android:name=".activity.ImplicitActivity" />
         <activity
             android:name=".activity.SecondActivity"
             android:label="Second Activity"
@@ -29,9 +31,7 @@
         <activity
             android:name=".activity.FirstActivity"
             android:label="First Activity" />
-        <activity android:name=".activity.TextScrollingViewActivity">
-
-        </activity>
+        <activity android:name=".activity.TextScrollingViewActivity"></activity>
         <activity android:name=".activity.HelloToastActivity" />
         <activity android:name=".activity.MainActivity" />
     </application>
