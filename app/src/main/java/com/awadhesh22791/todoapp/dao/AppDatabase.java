@@ -14,7 +14,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Todo.class},version = 1)
+@Database(entities = {Todo.class},version = 1,exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract TodoDao todoDao();
     private static volatile AppDatabase INSTANCE;

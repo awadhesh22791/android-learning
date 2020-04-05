@@ -67,7 +67,10 @@ public class FirstFragment extends AbstractFragment {
         @Override
         public void onClick(View view) {
             //Navigate using fragment id
-           findNavController().navigate(R.id.secondFragment);
+            FirstFragmentDirections.ActionFirstFragmentToSecondFragment action=
+                    FirstFragmentDirections.actionFirstFragmentToSecondFragment();
+            action.setTitle("Second Fragment");
+           findNavController().navigate(action);
         }
     };
     @Override

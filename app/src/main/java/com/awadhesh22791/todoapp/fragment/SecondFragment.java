@@ -69,6 +69,7 @@ public class SecondFragment extends AbstractFragment {
         if(buttonToThirdFragment!=null){
             buttonToThirdFragment.setOnClickListener(buttonToThirdFragmentListener);
         }
+        String title=getArguments().getString("title");
         return view;
     }
 

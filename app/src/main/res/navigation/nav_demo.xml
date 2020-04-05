@@ -10,6 +10,10 @@
         android:name="com.awadhesh22791.todoapp.fragment.FirstFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_first" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Title" />
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/secondFragment" />
@@ -19,6 +23,10 @@
         android:name="com.awadhesh22791.todoapp.fragment.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Title" />
         <action
             android:id="@+id/action_secondFragment_to_thirdFragment"
             app:destination="@id/thirdFragment" />
@@ -27,5 +35,10 @@
         android:id="@+id/thirdFragment"
         android:name="com.awadhesh22791.todoapp.fragment.ThirdFragment"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/fragment_third" >
+        <argument
+            android:name="title"
+            app:argType="string"
+            android:defaultValue="Title" />
+    </fragment>
 </navigation>
