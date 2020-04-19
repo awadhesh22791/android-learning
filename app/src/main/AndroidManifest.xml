@@ -11,11 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".activity.NavigationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.PaymentActivity" />
         <activity
@@ -34,7 +29,13 @@
             android:name=".activity.FirstActivity"
             android:label="First Activity" />
         <activity android:name=".activity.TextScrollingViewActivity" />
-        <activity android:name=".activity.HelloToastActivity" />
+        <activity android:name=".activity.HelloToastActivity_">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.MainActivity" />
     </application>
 
