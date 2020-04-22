@@ -7,6 +7,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -37,22 +39,30 @@ public class NotificationDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_demo);
         createNotificationChannel();
+        setNotificationButtonState(true,false,false);
     }
 
     @Click(R.id.buttonNotify)
     public void sendNotification(){
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
+        setNotificationButtonState(false,true,true);
     }
 
     @Click(R.id.buttonNotifyUpdate)
     public void updateNotification(){
-
+        Bitmap androidImage= BitmapFactory.decodeResource(getResources(),R.drawable.mascot_1);
+        NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
+        notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(androidImage)
+        .setBigContentTitle("Notification updated!"));
+        mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
+        setNotificationButtonState(false,false,true);
     }
 
     @Click(R.id.buttonNotifyCancel)
     public void cancelNotification(){
         mNotificationManager.cancel(NOTIFICATION_ID);
+        setNotificationButtonState(true,false,false);
     }
 
     public void createNotificationChannel(){
@@ -81,5 +91,11 @@ public class NotificationDemoActivity extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setDefaults(NotificationCompat.DEFAULT_ALL);
         return notifyBuilder;
+    }
+
+    void setNotificationButtonState(boolean notifyEnabled,boolean updateEnabled,boolean cancelEnabled){
+        buttonNotify.setEnabled(notifyEnabled);
+        buttonNotifyUpdate.setEnabled(updateEnabled);
+        buttonNotifyCancel.setEnabled(cancelEnabled);
     }
 }
