@@ -7,22 +7,22 @@
     tools:context=".activity.NotificationDemoActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonNotifyUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNotifyCancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonNotify" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonNotifyCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

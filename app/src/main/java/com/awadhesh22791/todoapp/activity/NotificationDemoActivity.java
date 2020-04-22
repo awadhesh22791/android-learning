@@ -24,6 +24,10 @@ public class NotificationDemoActivity extends AppCompatActivity {
 
     @ViewById(R.id.buttonNotify)
     Button buttonNotify;
+    @ViewById(R.id.buttonNotifyUpdate)
+    Button buttonNotifyUpdate;
+    @ViewById(R.id.buttonNotifyCancel)
+    Button buttonNotifyCancel;
     private static final String PRIMARY_CHANNEL_ID="primary_notification_channel";
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID=0;
@@ -39,6 +43,16 @@ public class NotificationDemoActivity extends AppCompatActivity {
     public void sendNotification(){
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
+    }
+
+    @Click(R.id.buttonNotifyUpdate)
+    public void updateNotification(){
+
+    }
+
+    @Click(R.id.buttonNotifyCancel)
+    public void cancelNotification(){
+        mNotificationManager.cancel(NOTIFICATION_ID);
     }
 
     public void createNotificationChannel(){
@@ -63,7 +77,9 @@ public class NotificationDemoActivity extends AppCompatActivity {
                 .setContentText("This is notification Text.")
                 .setSmallIcon(R.drawable.ic_android)
                 .setContentIntent(notificationPendingIntent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setDefaults(NotificationCompat.DEFAULT_ALL);
         return notifyBuilder;
     }
 }
