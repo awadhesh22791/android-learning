@@ -6,7 +6,10 @@ import androidx.core.app.NotificationCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -33,6 +36,8 @@ public class NotificationDemoActivity extends AppCompatActivity {
     private static final String PRIMARY_CHANNEL_ID="primary_notification_channel";
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID=0;
+    private static final String ACTION_UPDATE_NOTIFICATION="com.awadhesh22791.todoapp.activty.ACTION_UPDATE_NOTIFICATION";
+    private NotificationReceiver mReceiver=new NotificationReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,16 @@ public class NotificationDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification_demo);
         createNotificationChannel();
         setNotificationButtonState(true,false,false);
+        registerReceiver(mReceiver,new IntentFilter(ACTION_UPDATE_NOTIFICATION));
     }
 
     @Click(R.id.buttonNotify)
     public void sendNotification(){
+        Intent updateIntent=new Intent(ACTION_UPDATE_NOTIFICATION);
+        PendingIntent updatePendingIntent=PendingIntent.getBroadcast(this,NOTIFICATION_ID,
+                updateIntent,PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
+        notifyBuilder.addAction(R.drawable.ic_update,"Update Notification",updatePendingIntent);
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
         setNotificationButtonState(false,true,true);
     }
@@ -97,5 +107,19 @@ public class NotificationDemoActivity extends AppCompatActivity {
         buttonNotify.setEnabled(notifyEnabled);
         buttonNotifyUpdate.setEnabled(updateEnabled);
         buttonNotifyCancel.setEnabled(cancelEnabled);
+    }
+
+    public class NotificationReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            updateNotification();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mReceiver);
+        super.onDestroy();
     }
 }
