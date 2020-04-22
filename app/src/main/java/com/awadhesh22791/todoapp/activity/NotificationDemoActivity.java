@@ -6,7 +6,10 @@ import androidx.core.app.NotificationCompat;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,6 +19,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.awadhesh22791.todoapp.R;
+import com.awadhesh22791.todoapp.constant.Field;
+import com.awadhesh22791.todoapp.constant.Static;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -33,6 +38,9 @@ public class NotificationDemoActivity extends AppCompatActivity {
     private static final String PRIMARY_CHANNEL_ID="primary_notification_channel";
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID=0;
+    private static final String ACTION_UPDATE_NOTIFICATION="com.awadhesh22791.todoapp.activty.ACTION_UPDATE_NOTIFICATION";
+    private static final String ACTION_RESET_BUTTON="com.awadhesh22791.todoapp.activty.ACTION_RESET_BUTTON";
+    private NotificationReceiver mReceiver=new NotificationReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +48,21 @@ public class NotificationDemoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification_demo);
         createNotificationChannel();
         setNotificationButtonState(true,false,false);
+        registerReceiver(mReceiver,new IntentFilter(ACTION_UPDATE_NOTIFICATION));
+        registerReceiver(mReceiver,new IntentFilter(ACTION_RESET_BUTTON));
     }
 
     @Click(R.id.buttonNotify)
     public void sendNotification(){
+        Intent updateIntent=new Intent(ACTION_UPDATE_NOTIFICATION);
+        PendingIntent updatePendingIntent=PendingIntent.getBroadcast(this,NOTIFICATION_ID,
+                updateIntent,PendingIntent.FLAG_ONE_SHOT);
+        Intent cancelNotification=new Intent(ACTION_RESET_BUTTON);
+        PendingIntent cancelNotificationPendingIntent=PendingIntent.getBroadcast(this,NOTIFICATION_ID,
+                cancelNotification,PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
+        notifyBuilder.setDeleteIntent(cancelNotificationPendingIntent);
+        notifyBuilder.addAction(R.drawable.ic_update,"Update Notification",updatePendingIntent);
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
         setNotificationButtonState(false,true,true);
     }
@@ -53,8 +71,12 @@ public class NotificationDemoActivity extends AppCompatActivity {
     public void updateNotification(){
         Bitmap androidImage= BitmapFactory.decodeResource(getResources(),R.drawable.mascot_1);
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
-        notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(androidImage)
-        .setBigContentTitle("Notification updated!"));
+        notifyBuilder.setStyle(new NotificationCompat.InboxStyle()
+        .addLine("First Line")
+        .addLine("Second Line")
+        .addLine("Third Line")
+        .setBigContentTitle("Title")
+        .setSummaryText("+3 More"));
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
         setNotificationButtonState(false,false,true);
     }
@@ -97,5 +119,23 @@ public class NotificationDemoActivity extends AppCompatActivity {
         buttonNotify.setEnabled(notifyEnabled);
         buttonNotifyUpdate.setEnabled(updateEnabled);
         buttonNotifyCancel.setEnabled(cancelEnabled);
+    }
+
+    public class NotificationReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(ACTION_UPDATE_NOTIFICATION.equalsIgnoreCase(intent.getAction())) {
+                updateNotification();
+            }else if(ACTION_RESET_BUTTON.equalsIgnoreCase(intent.getAction())){
+                setNotificationButtonState(true,false,false);
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        unregisterReceiver(mReceiver);
+        super.onDestroy();
     }
 }
