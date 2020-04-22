@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.awadhesh22791.todoapp.R;
+import com.awadhesh22791.todoapp.constant.Field;
+import com.awadhesh22791.todoapp.constant.Static;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -37,6 +39,7 @@ public class NotificationDemoActivity extends AppCompatActivity {
     private NotificationManager mNotificationManager;
     private static final int NOTIFICATION_ID=0;
     private static final String ACTION_UPDATE_NOTIFICATION="com.awadhesh22791.todoapp.activty.ACTION_UPDATE_NOTIFICATION";
+    private static final String ACTION_RESET_BUTTON="com.awadhesh22791.todoapp.activty.ACTION_RESET_BUTTON";
     private NotificationReceiver mReceiver=new NotificationReceiver();
 
     @Override
@@ -46,6 +49,7 @@ public class NotificationDemoActivity extends AppCompatActivity {
         createNotificationChannel();
         setNotificationButtonState(true,false,false);
         registerReceiver(mReceiver,new IntentFilter(ACTION_UPDATE_NOTIFICATION));
+        registerReceiver(mReceiver,new IntentFilter(ACTION_RESET_BUTTON));
     }
 
     @Click(R.id.buttonNotify)
@@ -53,7 +57,11 @@ public class NotificationDemoActivity extends AppCompatActivity {
         Intent updateIntent=new Intent(ACTION_UPDATE_NOTIFICATION);
         PendingIntent updatePendingIntent=PendingIntent.getBroadcast(this,NOTIFICATION_ID,
                 updateIntent,PendingIntent.FLAG_ONE_SHOT);
+        Intent cancelNotification=new Intent(ACTION_RESET_BUTTON);
+        PendingIntent cancelNotificationPendingIntent=PendingIntent.getBroadcast(this,NOTIFICATION_ID,
+                cancelNotification,PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder notifyBuilder=getNotificationBuilder();
+        notifyBuilder.setDeleteIntent(cancelNotificationPendingIntent);
         notifyBuilder.addAction(R.drawable.ic_update,"Update Notification",updatePendingIntent);
         mNotificationManager.notify(NOTIFICATION_ID,notifyBuilder.build());
         setNotificationButtonState(false,true,true);
@@ -113,7 +121,11 @@ public class NotificationDemoActivity extends AppCompatActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            updateNotification();
+            if(ACTION_UPDATE_NOTIFICATION.equalsIgnoreCase(intent.getAction())) {
+                updateNotification();
+            }else if(ACTION_RESET_BUTTON.equalsIgnoreCase(intent.getAction())){
+                setNotificationButtonState(true,false,false);
+            }
         }
     }
 
